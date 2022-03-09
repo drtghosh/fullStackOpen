@@ -1,26 +1,33 @@
-function Hello(props) {
+const Hello = ({ name, time }) => {
+  const totalTime = 60;
+  const timeSpent = () => {
+    return totalTime - time;
+  };
+
   return (
     <div>
       <p>
-        Hello {props.name}. You got {props.time} minutes.
+        Hello {name}. You have spent {timeSpent()} minutes. You have {time}{" "}
+        minutes remaining.
       </p>
     </div>
   );
-}
+};
 
-function App() {
+const App = ({ counter }) => {
   console.log("Hello from the app component.");
   const dateNow = new Date();
   const timeRemaining = 30;
   return (
     <>
-      <h1>Greetings fellow humans!</h1>
+      <h1>Counter: {counter}</h1>
+      <h2>Greetings fellow humans!</h2>
       <Hello name="Amy" time={timeRemaining + 5} />
       <Hello name="Leonard" time={timeRemaining} />
       <Hello name="Howard" time={timeRemaining + 15} />
       <p>It's {dateNow.toString()} now.</p>
     </>
   );
-}
+};
 
 export default App;
