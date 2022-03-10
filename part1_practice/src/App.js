@@ -28,9 +28,20 @@ const App = () => {
   const timeRemaining = 30;
 
   const [counter, setCounter] = useState(0);
+  const [right, rightCounter] = useState(0);
+  const [wrong, wrongCounter] = useState(0);
+  const [all, allCounter] = useState([]);
   const increaseCounter = () => setCounter(counter + 1);
   const decreaseCounter = () => setCounter(counter - 1);
   const resetCounter = () => setCounter(0);
+  const handleRight = () => {
+    allCounter(all.concat("✓"));
+    rightCounter(right + 1);
+  };
+  const handleWrong = () => {
+    allCounter(all.concat("X"));
+    wrongCounter(wrong + 1);
+  };
 
   return (
     <>
@@ -43,6 +54,11 @@ const App = () => {
       <Hello name="Leonard" time={timeRemaining} />
       <Hello name="Howard" time={timeRemaining + 15} />
       <p>It's {dateNow.toString()} now.</p>
+      <p>Right choices: {right}</p>
+      <Button onClick={handleRight} show="Right" />
+      <Button onClick={handleWrong} show="Wrong" />
+      <p>Wrong choices: {wrong}</p>
+      <h3>Your choices till now: {all.join(" ")}</h3>
     </>
   );
 };
