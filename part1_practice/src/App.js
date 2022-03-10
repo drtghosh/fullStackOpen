@@ -16,18 +16,28 @@ const Hello = ({ name, time }) => {
   );
 };
 
+const Counter = ({ counter }) => <h1>Counter: {counter}</h1>;
+
+const Button = ({ onClick, show }) => {
+  return <button onClick={onClick}>{show}</button>;
+};
+
 const App = () => {
   console.log("Hello from the app component.");
   const dateNow = new Date();
   const timeRemaining = 30;
-  const [counter, setCounter] = useState(0);
 
-  setTimeout(() => setCounter(counter + 1), 3000);
-  console.log("Rendering...", counter);
+  const [counter, setCounter] = useState(0);
+  const increaseCounter = () => setCounter(counter + 1);
+  const decreaseCounter = () => setCounter(counter - 1);
+  const resetCounter = () => setCounter(0);
 
   return (
     <>
-      <h1>Counter: {counter}</h1>
+      <Counter counter={counter} />
+      <Button onClick={increaseCounter} show="+" />
+      <Button onClick={decreaseCounter} show="-" />
+      <Button onClick={resetCounter} show="Reset" />
       <h2>Greetings fellow humans!</h2>
       <Hello name="Amy" time={timeRemaining + 5} />
       <Hello name="Leonard" time={timeRemaining} />
