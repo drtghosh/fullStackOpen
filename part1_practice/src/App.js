@@ -22,6 +22,14 @@ const Button = ({ onClick, show }) => {
   return <button onClick={onClick}>{show}</button>;
 };
 
+const Choices = ({ all }) => {
+  if (all.length === 0) {
+    return <h3>Make your choice by clicking the right or wrong button</h3>;
+  } else {
+    return <h3>Your choices till now: {all.join(" ")}</h3>;
+  }
+};
+
 const App = () => {
   console.log("Hello from the app component.");
   const dateNow = new Date();
@@ -58,7 +66,7 @@ const App = () => {
       <Button onClick={handleRight} show="Right" />
       <Button onClick={handleWrong} show="Wrong" />
       <p>Wrong choices: {wrong}</p>
-      <h3>Your choices till now: {all.join(" ")}</h3>
+      <Choices all={all} />
     </>
   );
 };
