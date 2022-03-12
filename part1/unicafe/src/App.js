@@ -8,16 +8,24 @@ const Statistics = ({ good, neutral, bad }) => {
   const all = good + neutral + bad;
   const total = good - bad;
 
-  return (
-    <div>
-      <p>good {good}</p>
-      <p>neutral {neutral}</p>
-      <p>bad {bad}</p>
-      <p>all {all}</p>
-      <p>average {total / all}</p>
-      <p>positive {(100 * good) / all} %</p>
-    </div>
-  );
+  if (all === 0) {
+    return (
+      <div>
+        <p>No feedback given</p>
+      </div>
+    );
+  } else {
+    return (
+      <div>
+        <p>good {good}</p>
+        <p>neutral {neutral}</p>
+        <p>bad {bad}</p>
+        <p>all {all}</p>
+        <p>average {total / all}</p>
+        <p>positive {(100 * good) / all} %</p>
+      </div>
+    );
+  }
 };
 
 const App = () => {
