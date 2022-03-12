@@ -42,6 +42,10 @@ const App = () => {
   const increaseCounter = () => setCounter(counter + 1);
   const decreaseCounter = () => setCounter(counter - 1);
   const resetCounter = () => setCounter(0);
+  const playSong = (path) => () => {
+    const song = new Audio(path);
+    song.play();
+  };
   const handleRight = () => {
     allCounter(all.concat("✓"));
     rightCounter(right + 1);
@@ -57,11 +61,34 @@ const App = () => {
       <Button onClick={increaseCounter} show="+" />
       <Button onClick={decreaseCounter} show="-" />
       <Button onClick={resetCounter} show="Reset" />
+      <br />
       <h2>Greetings fellow humans!</h2>
       <Hello name="Amy" time={timeRemaining + 5} />
       <Hello name="Leonard" time={timeRemaining} />
       <Hello name="Howard" time={timeRemaining + 15} />
       <p>It's {dateNow.toString()} now.</p>
+      <br />
+      <h2>Wanna listen to songs?</h2>
+      <Button
+        onClick={playSong(
+          "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
+        )}
+        show="SoundHelix Song1"
+      />
+      <Button
+        onClick={playSong(
+          "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3"
+        )}
+        show="SoundHelix Song2"
+      />
+      <Button
+        onClick={playSong(
+          "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3"
+        )}
+        show="SoundHelix Song3"
+      />
+      <br />
+      <h2>Choices, choices! Life rejoices...</h2>
       <p>Right choices: {right}</p>
       <Button onClick={handleRight} show="Right" />
       <Button onClick={handleWrong} show="Wrong" />
